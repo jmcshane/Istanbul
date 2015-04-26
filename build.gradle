@@ -9,9 +9,13 @@ buildscript {
   }
 }
 
-apply plugin: "com.gradle.plugin-publish"
-apply plugin: "groovy"
-apply plugin: "eclipse"
+plugins {
+	id "groovy"
+	id "eclipse"
+	id "com.moowork.grunt" version "0.9"
+}
+
+apply plugin: 'com.gradle.plugin-publish'
 
 repositories {
   jcenter()

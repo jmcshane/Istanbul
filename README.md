@@ -18,7 +18,7 @@ Set the values of the properties `istanbul_coverage_dir` and `istanbul_grunt_tas
 ```json
 {
 	"istanbul_coverage_dir" : "istanbul/coverage/output",
-	"istanbul_grunt_task" : "build"
+	"istanbul_grunt_task" : "task_name"
 }
 ```
 
@@ -41,10 +41,11 @@ grunt.initConfig({
         print: 'detail'
       }
     }
+    
+    grunt.registerTask('task_name', ['mochaTest:unit', 'storeCoverage', 'makeReport']);
 });
 ```
 
 The Istanbul Grunt task should be the task that you want run during the Gradle build to run the tests and generate the report.
 The Grunt task can then be configured further within the project `Gruntfile.js`. 
-
 
