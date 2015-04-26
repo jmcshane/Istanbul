@@ -8,8 +8,7 @@ class IstanbulTask extends DefaultTask {
 
 	@TaskAction
 	public void istanbul() {
-		IstanbulExtension extension = 
-			project.getExtensions().getByName(IstanbulExtension.ISTANBUL_EXTENSION_NAME)
+		IstanbulExtension extension = project.extensions[IstanbulExtension.ISTANBUL_EXTENSION_NAME]
 		if (project.file(extension.getCoverageFile()).exists()) {
 			project.plugins.withId('sonarRunner') {
 				configureSonarRunner(extension)
@@ -19,7 +18,7 @@ class IstanbulTask extends DefaultTask {
 	
 	private void configureSonarRunner(IstanbulExtension extension) {
 		SonarRunnerExtension sonarRunner = 
-			project.getExtensions().getByName(SonarRunnerExtension.SONAR_RUNNER_EXTENSION_NAME)
+			project.extensions[SonarRunnerExtension.SONAR_RUNNER_EXTENSION_NAME]
 		sonarRunner.sonarProperties {
 			property "sonar.javascript.lcov.reportPath" "${extension.getCoverageFile()}"
 		}
